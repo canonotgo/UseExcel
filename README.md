@@ -1,5 +1,6 @@
 This is a library that stores VBA code.
 
+```excel
 SUBSTITUTE:
     function is used to replace occurrences of a specified substring within a text string. The syntax for the SUBSTITUTE function is:
     =SUBSTITUTE(text, old_text, new_text, [instance_num])
@@ -13,11 +14,29 @@ Example: Get prefix of mac address
 
 Example: Whether the value is the same
     =IF(D2=F2,"Same","Different")
+```
 
-Example:
-    =VLOOKUP(A2,'C:\Users\cc\Desktop\Excel\[all_data.xlsx]Sheet1'!$A$1:$D$100000,2,FALSE)
+### 统计
 
-Example:
-    =COUNTA('Sheet0'!B2:B1000)
-    =COUNTA(INDIRECT("'"&B2&"'!A:A"))
-    =COUNTIF('Sheet0'!G:G,B3)
+```bash
+# 通过 INDIRECT 间接的关联B2的值 统计Sheet名称等于 B2的 A列有多少有效数据
+=COUNTA(INDIRECT("'"&B2&"'!A:A"))
+
+# 根据 Sheet0 表单的 B2:B1000 范围 统计有数据总和
+=COUNTA('Sheet0'!B2:B1000)
+
+# 在 Sheet0 表单 G列 统计值为B3的数据
+
+# 在 Sheet1 表单 A 列 统计值 "Same" 出现的次数。
+=COUNTIF(Sheet1!A:A, "Same")
+
+# 统计 Sheet1 表单 A 列 为 "Same" 且 B 列 为 "Type1" 的行数
+=COUNTIFS(Sheet1!A:A, "Same", Sheet1!B:B, "Type1")
+```
+
+### 查找
+
+```bash
+# 在 'C:\Users\cc\Desktop\Excel\[all_data.xlsx]Sheet1'!$A$1:$D$100000 区域 查找值等于 A2 数据，将制定区域的第二列数据 通过 FALSE(精准匹配) 输出
+=VLOOKUP(A2,'C:\Users\cc\Desktop\Excel\[all_data.xlsx]Sheet1'!$A$1:$D$100000,2,FALSE)
+```

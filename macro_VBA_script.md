@@ -1,3 +1,6 @@
+**清空Excel文件中所有Sheet页的F列值**
+
+```vb
 Sub ClearColumn()
     Dim ws As Worksheet
     Dim lastRow As Long
@@ -13,3 +16,4 @@ Sub ClearColumn()
         rng.ClearContents
     Next ws
 End Sub
+```
