@@ -39,4 +39,7 @@ Example: Whether the value is the same
 ```bash
 # 在 'C:\Users\cc\Desktop\Excel\[all_data.xlsx]Sheet1'!$A$1:$D$100000 区域 查找值等于 A2 数据，将制定区域的第二列数据 通过 FALSE(精准匹配) 输出
 =VLOOKUP(A2,'C:\Users\cc\Desktop\Excel\[all_data.xlsx]Sheet1'!$A$1:$D$100000,2,FALSE)
+
+# 关键字查找 1: 在 Sheet1 表单 创建A(key) B(The value we need), 在当前 Sheet 页想找出包含 Sheet1 A列的关键字, 包含是获取 Sheet1 B列的值
+=IF(SUMPRODUCT(--ISNUMBER(SEARCH(Sheet1!$A$2:$A$96, B83))) > 0, INDEX(Sheet1!$B$2:$B$96, MATCH(TRUE, ISNUMBER(SEARCH(Sheet1!$A$2:$A$96, B83)), 0)), "")
 ```
